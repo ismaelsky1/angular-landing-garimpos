@@ -1,0 +1,49 @@
+<section class="">
+    <div class="container">
+        <div class="row row-grid align-items-top justify-content-between">
+            <div class="col-12 col-md-6">
+                <h2 class="text-center custom-text-primary contact_title h2">Contato</h2>
+                <form (ngSubmit)="new()" [formGroup]="formContact">
+                    <div class="form-group">
+                        <label class="form-control-label">Nome</label>
+                        <div class="input-group input-group-merge">
+                            <input formControlName="name" required type="text" class="form-control " id="input-email"
+                                placeholder="Nome completo">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-control-label">Email</label>
+                        <div class="input-group input-group-merge">
+                            <input formControlName="email" required type="email" class="form-control " id="input-email"
+                                placeholder="name@example.com">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-control-label">Telefone</label>
+                        <div class="input-group input-group-merge  mb-3">
+                            <input minlength="16" formControlName="cellphone" required type="tel" class="phone_with_ddd form-control " id="input-tel"
+                                placeholder="Telefone">
+                        </div>
+                        <label class="form-control-label">Mensagem</label>
+                        <div class="input-group input-group-merge">
+                            <textarea formControlName="text" required class="form-control" placeholder="Messagem..."
+                                rows="3"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="mt-4">
+                        <button type="submit" [disabled]="formContact.invalid" class="btn btn-sm btn-dark btn-icon rounded-pill">
+                            <span class="btn-inner--text">Enviar</span>
+                            <span class="btn-inner--icon"><i data-feather="arrow-right"></i></span>
+                        </button></div>
+                </form>
+            </div>
+            <div class="col-4 d-none d-md-block">
+                <figure class="w-100">
+                    <img alt="Image placeholder" src="/assets/img/svg/illustrations/contact.png"
+                        class="img-fluid mw-md-120">
+                </figure>
+            </div>
+        </div>
+    </div>
+</section>

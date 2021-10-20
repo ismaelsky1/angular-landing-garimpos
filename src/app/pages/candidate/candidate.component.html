@@ -1,0 +1,1127 @@
+<section class="slice py-2  background">
+    <div class="container">
+        <div class="row row-grid align-items-center justify-content-center">
+            <div class="pt-lg-5 pb-lg-5 pt-7 col-12 col-md-12 col-lg-11 text-center">
+                <span class="h1 text-white shadow">Currículo Digital</span>
+            </div>
+            <div class="col-12 col-md-4 col-lg-4 text-center my-0">
+                <div class="card w-100">
+                    <div data-toggle="modal" data-target=".MyCredit" class="card-body text-center">
+                        <div class="mb-3">
+                            <div class="icon icon-shape icon-md bg-primary shadow-primary text-white">
+                                <i class="fas fa-wallet"></i>
+                            </div>
+                        </div>
+                        <!-- Title -->
+                        <h5 class="h3 font-weight-bolder mb-1">{{reward_balance?.CREDIT + reward_balance?.BONUS}} Envios</h5>
+                        <!-- Subtitle -->
+                        <span class="d-block text-sm text-muted font-weight-bold">
+                            MEUS CRÉDITOS
+                            <i data-feather="chevron-up" class="text-success"></i>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-4 col-lg-4 text-center my-0">
+                <div class="card w-100">
+                    <div data-toggle="modal" data-target=".resumeSent" class="card-body text-center">
+                        <div class="mb-3">
+                            <div class="icon icon-shape icon-md bg-primary shadow-primary text-white">
+                                <i class="fas fa-paper-plane"></i>
+
+                            </div>
+                        </div>
+                        <!-- Title -->
+                        <h5 class="h3 font-weight-bolder mb-1">{{subscription?.total}}</h5>
+                        <!-- Subtitle -->
+                        <span class="d-block text-sm text-muted font-weight-bold">
+                            CURRÍCULOS ENVIADOS
+                            <i data-feather="chevron-up" class="text-success"></i>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-4 col-lg-4 text-center my-0">
+                <div class="card w-100">
+                    <div data-toggle="modal" data-target=".notification" class="card-body text-center">
+                        <div class="mb-3">
+                            <div class="icon icon-shape icon-md bg-primary shadow-primary text-white">
+                                <i class="fas fa-bell"></i>
+                            </div>
+                        </div>
+                        <!-- Title -->
+                        <h5 class="h3 font-weight-bolder mb-1">{{notifications.length}}</h5>
+                        <!-- Subtitle -->
+                        <span class="d-block text-sm text-muted font-weight-bold">
+                            NOTIFICAÇÕES
+                            <i data-feather="chevron-up" class="text-success"></i>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <!-- <div class="col-12 col-md-4 col-lg-4 text-center my-0 ">
+                <div class="card w-100">
+                    <div [routerLink]="['/vagas']" class="card-body">
+                        <h5 class="h6 text-center mt-3">BUSCAR VAGAS</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-4 col-lg-4 text-center my-0">
+                <div class="card w-100">
+                    <div class="card-body">
+                        <h5 class="h6 text-center mt-3">ADQUIRA PACOTES</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-4 col-lg-4 text-center my-0">
+                <div class="card w-100">
+                    <div class="card-body">
+                        <h5 class="h6 text-center mt-3">Pesquisa Salarial</h5>
+                    </div>
+                </div>
+            </div> -->
+
+            <div class="col-12 col-md-12 col-lg-12">
+                <div class="card">
+                    <div class="container">
+                        <div class="row row-grid align-items-start justify-content-center">
+                            <div class="pt-2 col-6 col-md-2 col-lg-2 text-center ">
+                                <img class="img_jobs p-1 avatar  rounded-circle avatar-lg" src="{{avatarUser}}">
+                               
+                                <div class="mt-3 ">
+                                    <!-- <input accept="image/*" (change)="changeAvatarCandidate($event.target)" type="file" name="file-2[]" id="file-2"
+                                        class="custom-input-file custom-input-file--2 upload_img"
+                                        data-multiple-caption="{count} files selected" multiple />
+                                    <label class="lblUploadImage" for="file-2">
+                                        <i data-feather="upload"></i>
+                                        <span>Mudar Foto</span>
+                                    </label> -->
+                                    <label  (click)="compressFile()" class="lblUploadImage">
+                                        <i data-feather="upload"></i>
+                                        <span>Mudar Foto</span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="pt-lg-4 col-12 col-md-6 col-lg-6 text-center text-md-left ">
+                                <span class="h4">{{candidate?.name}}</span>
+                                <p *ngIf="candidate?.birthday" class="text-sm text-muted mb-0">
+                                    Data Nascimento: {{candidate?.birthday | date: "dd/MM/yyyy"}}
+                                </p>
+                            </div>
+                            <div class="pt-lg-4 align-self-start col-12 col-md-12 col-lg-3 text-right">
+                                <!-- <button class="btn btn-sm btn-outline-primary btn-block">EDITAR MEUS DADOS
+                                </button> -->
+                                <p class="text-dark text-center mt-2"><i class="fas fa-map-marker-alt"></i> Barreiras-BA
+                                </p>
+                            </div>
+                        </div>
+                        <div class="row row-grid align-items-center justify-content-center">
+                            <form (change)="isChangePersonalDateForm = true" (keyup)="isChangePersonalDateForm = true"
+                                [formGroup]="personalDateForm" (ngSubmit)="setCandidate(personalDateForm.value)">
+                                <div class="col-12 order-md-2 text-left">
+                                    <h6 class="h5 mb-0 pb-0"> Dados Pessoais</h6>
+                                    <hr class="my-2 p-0" />
+                                    <div class="form-row">
+                                        <div class="col-12 col-sm-6 my-1">
+                                            <input type="text" class="form-control form-control-sm" required
+                                                formControlName="name" placeholder="Nome completo">
+                                        </div>
+                                        <div class="col-12 col-sm-6 my-1">
+                                            <input type="text" class="form-control form-control-sm" required
+                                                formControlName="nickname" placeholder="Apelido">
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="col-12 col-sm-2 my-1">
+                                            <input type="tel" class="altura form-control form-control-sm" required
+                                                formControlName="height" placeholder="Altura">
+                                        </div>
+                                        <div class="col-12 col-sm-2 my-1">
+                                            <input type="tel" class="quilograma form-control form-control-sm" required
+                                                formControlName="weight" placeholder="Peso">
+                                        </div>
+                                        <div class="col-12 col-sm-4 my-1">
+                                            <input type="text" class="date form-control form-control-sm birthday"
+                                                formControlName="birthday" placeholder="Data de Nascimento">
+                                        </div>
+                                        <div class="col-12 col-sm-2 my-1">
+                                            <select formControlName="gender" class="custom-select custom-select-sm">
+                                                <option [ngValue]="null" disabled> Gênero</option>
+                                                <option [ngValue]="'M'">Masculino</option>
+                                                <option [ngValue]="'F'">Feminino</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-12 col-sm-4 my-1">
+                                            <input type="text" mask="000.000.000-00" class="form-control form-control-sm" required
+                                                formControlName="document" placeholder="CPF">
+                                        </div>
+                                        <hr />
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="col-12 col-sm-3 my-1">
+                                            <input type="text" class="form-control form-control-sm" required
+                                                formControlName="rg" placeholder="RG">
+                                        </div>
+                                        <div class="col-12 col-sm-3 my-1">
+                                            <input type="text" class="form-control form-control-sm" required
+                                                formControlName="rg_emitting_organ" placeholder="Emissor">
+                                        </div>
+                                        <div class="col-12 col-sm-3 my-1">
+                                            <select formControlName="rg_state" class="custom-select custom-select-sm">
+                                                <option [ngValue]="null" disabled> UF </option>
+
+                                                <option [ngValue]="'RO'">Rondônia - RO</option>
+                                                <option [ngValue]="'AC'">Acre - AC</option>
+                                                <option [ngValue]="'AM'">Amazonas - AM</option>
+                                                <option [ngValue]="'RR'">Roraima - RR</option>
+                                                <option [ngValue]="'PA'">Pará - PA</option>
+                                                <option [ngValue]="'AP'">Amapá - AP</option>
+                                                <option [ngValue]="'TO'">Tocantins - TO</option>
+                                                <option [ngValue]="'MA'">Maranhão - MA</option>
+                                                <option [ngValue]="'PI'">Piauí - PI</option>
+                                                <option [ngValue]="'CE'">Ceará - CE</option>
+                                                <option [ngValue]="'RN'">Rio Grande do Norte - RN</option>
+                                                <option [ngValue]="'PB'">Paraíba - PB</option>
+                                                <option [ngValue]="'PE'">Pernambuco - PE</option>
+                                                <option [ngValue]="'AL'">Alagoas - AL</option>
+                                                <option [ngValue]="'SE'">Sergipe - SE</option>
+                                                <option [ngValue]="'BA'">Bahia - BA</option>
+                                                <option [ngValue]="'MG'">Minas Gerais - MG</option>
+                                                <option [ngValue]="'ES'">Espírito Santo - ES</option>
+                                                <option [ngValue]="'RJ'">Rio de Janeiro - RJ</option>
+                                                <option [ngValue]="'SP'">São Paulo - SP</option>
+                                                <option [ngValue]="'PR'">Paraná - PR</option>
+                                                <option [ngValue]="'SC'">Santa Catarina - SC</option>
+                                                <option [ngValue]="'RS'">Rio Grande do Sul - RS</option>
+                                                <option [ngValue]="'MS'">Mato Grosso do Sul - MS</option>
+                                                <option [ngValue]="'MT'">Mato Grosso - MT</option>
+                                                <option [ngValue]="'GO'">Goiás - GO</option>
+                                                <option [ngValue]="'DF'">Distrito Federal - DF</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-12 col-sm-3 my-1">
+                                            <input type="tel" class="date form-control form-control-sm"
+                                                placeholder="Data emissão" required formControlName="rg_issuance_date">
+                                        </div>
+                                        <hr />
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="col-12 col-sm-3 my-1">
+                                            <input type="number" class="form-control form-control-sm"
+                                                placeholder="titulo de eleitor" required formControlName="voter_title">
+                                        </div>
+
+                                        <div class="col-12 col-sm-3 my-1">
+                                            <select formControlName="marital_status"
+                                                class="custom-select custom-select-sm">
+                                                <option [ngValue]="null" disabled> Estado civil</option>
+
+                                                <option [ngValue]="'Solteiro(a)'">Solteiro(a)</option>
+                                                <option [ngValue]="'Casado(a)'">Casado(a)</option>
+                                                <option [ngValue]="'Divorciado(a)'">Divorciado(a)</option>
+                                                <option [ngValue]="'Viúvo(a)'">Viúvo(a)</option>
+                                                <option [ngValue]="'União Estável'">União Estável</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-12 col-sm-3 my-1">
+                                            <select formControlName="naturalness"
+                                                class="custom-select custom-select-sm">
+                                                <option [ngValue]="null" disabled>Naturalidade</option>
+                                                <option [ngValue]="city.code" *ngFor="let city of citys">{{city.name}}
+                                                </option>
+
+                                            </select>
+                                        </div>
+                                        <div class="col-12 col-sm-3 my-1">
+                                            <input type="text" class="form-control form-control-sm"
+                                                placeholder="Nacionalidade:" required formControlName="nationality">
+                                        </div>
+                                        <div class="col-12 col-sm-3 my-1">
+                                            <input type="text" class="form-control form-control-sm" placeholder="CNH"
+                                                required formControlName="cnh">
+                                        </div>
+                                        <div class="col-12 col-sm-3 my-1">
+                                            <select formControlName="cnh_category"
+                                                class="custom-select custom-select-sm">
+                                                <option [ngValue]="null" disabled>Categoria</option>
+
+                                                <option [ngValue]="'Permissão ACC'">Permissão ACC</option>
+                                                <option [ngValue]="'A'">A</option>
+                                                <option [ngValue]="'B'">B</option>
+                                                <option [ngValue]="'A e B'">A e B</option>
+                                                <option [ngValue]="'C'">C</option>
+                                                <option [ngValue]="'D'">D</option>
+                                            </select>
+                                        </div>
+
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="col-12 col-sm-4 my-1">
+                                            <input type="text" class="form-control form-control-sm" placeholder="CTPS"
+                                                required formControlName="ctps">
+                                        </div>
+                                        <div class="col-12 col-sm-3 my-1">
+                                            <select formControlName="ctps_state" class="custom-select custom-select-sm">
+                                                <option [ngValue]="null" disabled> UF </option>
+
+                                                <option [ngValue]="'RO'">Rondônia - RO</option>
+                                                <option [ngValue]="'AC'">Acre - AC</option>
+                                                <option [ngValue]="'AM'">Amazonas - AM</option>
+                                                <option [ngValue]="'RR'">Roraima - RR</option>
+                                                <option [ngValue]="'PA'">Pará - PA</option>
+                                                <option [ngValue]="'AP'">Amapá - AP</option>
+                                                <option [ngValue]="'TO'">Tocantins - TO</option>
+                                                <option [ngValue]="'MA'">Maranhão - MA</option>
+                                                <option [ngValue]="'PI'">Piauí - PI</option>
+                                                <option [ngValue]="'CE'">Ceará - CE</option>
+                                                <option [ngValue]="'RN'">Rio Grande do Norte - RN</option>
+                                                <option [ngValue]="'PB'">Paraíba - PB</option>
+                                                <option [ngValue]="'PE'">Pernambuco - PE</option>
+                                                <option [ngValue]="'AL'">Alagoas - AL</option>
+                                                <option [ngValue]="'SE'">Sergipe - SE</option>
+                                                <option [ngValue]="'BA'">Bahia - BA</option>
+                                                <option [ngValue]="'MG'">Minas Gerais - MG</option>
+                                                <option [ngValue]="'ES'">Espírito Santo - ES</option>
+                                                <option [ngValue]="'RJ'">Rio de Janeiro - RJ</option>
+                                                <option [ngValue]="'SP'">São Paulo - SP</option>
+                                                <option [ngValue]="'PR'">Paraná - PR</option>
+                                                <option [ngValue]="'SC'">Santa Catarina - SC</option>
+                                                <option [ngValue]="'RS'">Rio Grande do Sul - RS</option>
+                                                <option [ngValue]="'MS'">Mato Grosso do Sul - MS</option>
+                                                <option [ngValue]="'MT'">Mato Grosso - MT</option>
+                                                <option [ngValue]="'GO'">Goiás - GO</option>
+                                                <option [ngValue]="'DF'">Distrito Federal - DF</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-12 col-sm-4 my-2">
+                                            <input maxlength="15" type="text" class="form-control form-control-sm" placeholder="PIS"
+                                                required formControlName="pis">
+                                        </div>
+                                    </div>
+                                    <!-- <div *ngIf="isChangePersonalDateForm"
+                                        class="row w-100 align-items-center justify-content-center">
+                                        <div class="col-2 col-sm-2 col-lg-2">
+                                            <button *ngIf="!isLoading" class="d-block btn btn-primary btn-sm mt-1">
+                                                <i class="fas fa-check"></i> Salvar
+                                            </button>
+
+                                            <button *ngIf="isLoading" class="d-block btn btn-primary btn-sm mt-1">
+                                                <span class="spinner-border spinner-border-sm" role="status"
+                                                    aria-hidden="true"></span>
+                                                <span class="sr-only">Loading...</span>
+                                            </button>
+
+
+                                        </div>
+                                    </div> -->
+                                </div>
+
+                                <div class="mt-1 col-12 order-md-2 text-left">
+                                    <h6 class="h5 mb-0 pb-0"> Dados de Contato</h6>
+                                    <hr class="my-2 p-0" />
+                                    <div class="form-row">
+                                        <div class="col-12 col-sm-4 my-1">
+                                            <input formControlName="email" type="text"
+                                                class="form-control form-control-sm" placeholder="Email">
+                                        </div>
+                                        <div class="col-12 col-sm-4 my-1">
+                                            <input formControlName="cellphone" type="text"
+                                                class="form-control form-control-sm" placeholder="Telefone">
+                                        </div>
+                                        <div class="col-12 col-sm-4 my-1">
+                                            <input formControlName="homepage" type="text"
+                                                class="form-control form-control-sm" placeholder="HomePage">
+                                        </div>
+                                    </div>
+                                    <!-- <div class="form-row">
+                                        <div class="col-12 col-sm-3 my-1">
+                                            <input formControlName="zipcode" type="text"
+                                                class="form-control form-control-sm" placeholder="CEP">
+                                        </div>
+                                        <div class="col-12 col-sm-3 my-1">
+                                            <select formControlName="city_id" class="custom-select custom-select-sm">
+                                                <option [ngValue]="null" disabled>Naturalidade</option>
+                                                <option [ngValue]="city.id" *ngFor="let city of citys">{{city.name}}
+                                                </option>
+
+                                            </select>
+                                        </div>
+                                        <div class="col-12 col-sm-3 my-1">
+                                            <input formControlName="district" type="text"
+                                                class="form-control form-control-sm" placeholder="Bairro">
+                                        </div>
+                                        <div class="col-12 col-sm-4 my-1">
+                                            <input formControlName="street" type="text"
+                                                class="form-control form-control-sm" placeholder="Endereço">
+                                        </div>
+                                        <div class="col-12 col-sm-2 my-1">
+                                            <input formControlName="number" type="text"
+                                                class="form-control form-control-sm" placeholder="Nº">
+                                        </div>
+                                        <div class="col-12 col-sm-3 my-1">
+                                            <input formControlName="complement" type="text"
+                                                class="form-control form-control-sm" placeholder="Complemento">
+                                        </div>
+
+                                        <div class="col-12 col-sm-3 my-1">
+                                            <input formControlName="reference" type="text"
+                                                class="form-control form-control-sm" placeholder="Ponto de Referencia">
+                                        </div>
+                                    </div> -->
+
+                                    <!-- <div *ngIf="isChangeContactDetailsForm"
+                                        class="row w-100 align-items-center justify-content-center">
+                                        <div class="col-2 col-sm-2 col-lg-2">
+                                            <button *ngIf="!isLoading" class="d-block btn btn-primary btn-sm mt-1">
+                                                <i class="fas fa-check"></i> Salvar
+                                            </button>
+
+                                            <button *ngIf="isLoading" class="d-block btn btn-primary btn-sm mt-1">
+                                                <span class="spinner-border spinner-border-sm" role="status"
+                                                    aria-hidden="true"></span>
+                                                <span class="sr-only">Loading...</span>
+                                            </button>   
+                                        </div>
+                                    </div> -->
+
+                                </div>
+                                <div class="mt-1 col-12 order-md-2 text-left">
+                                    <h6 class="h5 mb-0 pb-0">Endereço</h6>
+                                    <hr class="my-2 p-0" />
+
+                                    <!-- <div class="form-row">
+                                        <div class="col-12 col-sm-4 my-1">
+                                            <input formControlName="email" type="text"
+                                                class="form-control form-control-sm" placeholder="Email">
+                                        </div>
+                                        <div class="col-12 col-sm-4 my-1">
+                                            <input formControlName="cellphone" type="text"
+                                                class="form-control form-control-sm" placeholder="Telefone">
+                                        </div>
+                                        <div class="col-12 col-sm-4 my-1">
+                                            <input formControlName="homepage" type="text"
+                                                class="form-control form-control-sm" placeholder="HomePage">
+                                        </div>
+                                    </div> -->
+                                    <div class="form-row">
+                                        <div class="col-12 col-sm-3 my-1">
+                                            <input formControlName="zipcode" type="text"
+                                                class="form-control form-control-sm" placeholder="CEP">
+                                        </div>
+                                        <div class="col-12 col-sm-3 my-1">
+                                            <select formControlName="city_id" class="custom-select custom-select-sm">
+                                                <option [ngValue]="null" disabled>Naturalidade</option>
+                                                <option [ngValue]="city.id" *ngFor="let city of citys">{{city.name}}
+                                                </option>
+
+                                            </select>
+                                        </div>
+                                        <div class="col-12 col-sm-3 my-1">
+                                            <input formControlName="district" type="text"
+                                                class="form-control form-control-sm" placeholder="Bairro">
+                                        </div>
+                                        <div class="col-12 col-sm-4 my-1">
+                                            <input formControlName="street" type="text"
+                                                class="form-control form-control-sm" placeholder="Endereço">
+                                        </div>
+                                        <div class="col-12 col-sm-2 my-1">
+                                            <input formControlName="number" type="text"
+                                                class="form-control form-control-sm" placeholder="Nº">
+                                        </div>
+                                        <div class="col-12 col-sm-3 my-1">
+                                            <input formControlName="complement" type="text"
+                                                class="form-control form-control-sm" placeholder="Complemento">
+                                        </div>
+
+                                        <div class="col-12 col-sm-3 my-1">
+                                            <input formControlName="reference" type="text"
+                                                class="form-control form-control-sm" placeholder="Ponto de Referencia">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-12 col-sm-12 col-lg-12 px-0">
+                                        <button *ngIf="!isLoading && isChangePersonalDateForm"
+                                            class="my-4 btn-block btn btn-dark btn-sm mt-3">
+                                            <i class="fas fa-check"></i> Salvar
+                                        </button>
+
+                                        <button *ngIf="isLoading && isChangePersonalDateForm"
+                                            class="my-4  btn-block btn btn-dark btn-sm mt-1">
+                                            <span class="spinner-border spinner-border-sm" role="status"
+                                                aria-hidden="true"></span>
+                                            <span class="sr-only">Loading...</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                            <div class="my-2 col-12 order-md-2">
+                                <label class="h5 mb-0 pb-0 mr-auto"> Objetivo profissional </label>
+                                <hr class="my-2 p-0" />
+                                <ul class="list-group">
+                                    <li *ngFor="let itemCbo of candidateObjective"
+                                        class="list-group-item d-flex justify-content-between align-items-center">
+                                        <div class="row w-100 align-items-start">
+                                            <div class="col-12 col-sm-8 col-lg-10">
+                                                <strong>Cargo/Função de Interesse:</strong> {{itemCbo.cbo.name}} <br />
+                                                <!-- <strong>Nível hierárquico: </strong>Auxiliar / Operacional -->
+                                            </div>
+                                            <!-- <div class="col-12 col-sm-4 col-lg-2">
+                                                <span>Visualizações: <b>18</b></span>
+                                            </div>
+                                            <div class="col-6 col-sm-4 col-lg-2">
+                                                <div class="form-row">
+                                                    <span class="mt-1 mx-1 form-group">Ativo: </span>
+                                                    <label class=" form-group switch__container d-block">
+                                                        <input id="on" class="switch switch--shadow" type="checkbox" />
+                                                        <label for="on"></label>
+                                                    </label>
+                                                </div>
+                                            </div> -->
+                                            <div (click)="deleteCandidateObjective(itemCbo.id)"
+                                                class="col-12 col-sm-4 col-lg-2">
+                                                <!-- data-toggle="modal" data-target=".candidateObjective" -->
+                                                <button
+                                                    class="d-block btn btn-sm btn-outline-danger btn-block mt-0">Remover
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        <button data-toggle="modal" data-target=".candidateObjective"
+                                            class="dtn-block btn btn-sm btn-link btn-block mt-0"> <i
+                                                class="fas fa-plus"></i> Novo
+                                        </button>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="my-2 col-12 order-md-2 text-left">
+                                <h6 class="h5 mb-0 pb-0">Experiências</h6>
+
+                                <hr class="my-2 p-0" />
+                                <ul class="list-group">
+                                    <li *ngFor="let itemExp of candidateExperience"
+                                        class="list-group-item d-flex justify-content-between align-items-center">
+                                        <div class="row w-100 align-items-start">
+                                            <div class="col-12 col-sm-8 col-lg-6">
+                                                <strong>Cargo/Função: </strong>{{itemExp.occupation}}<br />
+                                                <strong>Em: </strong>{{itemExp.company}}
+                                            </div>
+                                            <div class="col-12 col-sm-4 col-lg-4">
+                                                <!-- <strong>Nível: </strong> Auxiliar / Operacional<br /> -->
+                                                <strong>Periodo: </strong> {{itemExp.initial_date}} <strong> a </strong>
+                                                {{(itemExp.final_date)? itemExp.final_date: "Empresa Atual"}}
+                                            </div>
+                                            <!-- <div class="col-6 col-sm-4 col-lg-2">
+                                                <div class="form-row">
+                                                    <span class="mt-1 mx-1 form-group">Ativo: </span>
+                                                    <label class=" form-group switch__container d-block">
+                                                        <input id="on" class="switch switch--shadow" type="checkbox" />
+                                                        <label for="on"></label>
+                                                    </label>
+                                                </div>
+                                            </div> -->
+                                            <div class="col-12 col-sm-4 col-lg-2">
+                                                <button (click)="fillExperience(itemExp)"
+                                                    class="d-block btn btn-sm btn-outline-primary btn-block mt-0">Editar
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        <button data-toggle="modal" data-target=".candidateExperience"
+                                            class="dtn-block btn btn-sm btn-link btn-block mt-0"> <i
+                                                class="fas fa-plus"></i> Novo
+                                        </button>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="my-2 col-12 order-md-2 text-left">
+                                <h6 class="h5 mb-0 pb-0">Formação Acadêmica, Cursos e Expertises</h6>
+                                <hr class="my-2 p-0" />
+                                <li *ngFor="let itemSkill of candidateSkill"
+                                    class="list-group-item d-flex justify-content-between align-items-center">
+                                    <div class="row w-100 align-items-start">
+                                        <div class="col-12 col-sm-8 col-lg-4">
+                                            <strong>{{itemSkill.type}}: </strong>{{itemSkill.skill}}<br />
+                                        </div>
+                                        <div class="col-12 col-sm-4 col-lg-4">
+                                            <strong>Duração: </strong>{{itemSkill.work_load}}
+                                        </div>
+                                        <!-- <div class="col-6 col-sm-4 col-lg-2">
+                                            <div class="form-row">
+                                                <span class="mt-1 mx-1 form-group">Ativo: </span>
+                                                <label class=" form-group switch__container d-block">
+                                                    <input id="on" class="switch switch--shadow" type="checkbox" />
+                                                    <label for="on"></label>
+                                                </label>
+                                            </div>
+                                        </div> -->
+                                        <div class="col-6 col-sm-4 col-lg-2">
+                                            Instituição: {{itemSkill.company}}
+                                        </div>
+
+                                        <div class="col-12 col-sm-4 col-lg-2">
+                                            <button (click)="fillSkill(itemSkill)"
+                                                class="d-block btn btn-sm btn-outline-primary btn-block mt-0">Editar
+                                            </button>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    <button (click)="resetModal()" data-toggle="modal" data-target=".candidateSkill"
+                                        class="dtn-block btn btn-sm btn-link btn-block mt-0"> <i
+                                            class="fas fa-plus"></i> Novo
+                                    </button>
+                                </li>
+                            </div>
+                            <!-- <div class="my-2 col-12 order-md-2 text-left">
+                                <h6 class="h5 mb-0 pb-0">Idiomas</h6>
+                                <hr class="my-2 p-0" />
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    <div class="row w-100 align-items-start">
+                                        <div class="col-12 col-sm-8 col-lg-8">
+                                            <strong>Lingua: </strong>Ingles<br />
+                                        </div>
+                                        <div class="col-6 col-sm-4 col-lg-2">
+                                            <div class="form-row">
+                                                <span class="mt-1 mx-1 form-group">Ativo: </span>
+                                                <label class=" form-group switch__container d-block">
+                                                    <input id="on" class="switch switch--shadow" type="checkbox" />
+                                                    <label for="on"></label>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-sm-4 col-lg-2">
+                                            <button class="d-block btn btn-sm btn-outline-primary btn-block mt-0">Editar
+                                            </button>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    <div class="row w-100 align-items-start justify-content-center">
+                                        <div class="col-12 col-sm-12 col-lg-12">
+                                            <button class="d-block btn btn-sm btn-link btn-block mt-0"> <i
+                                                    class="fas fa-plus"></i> Novo
+                                            </button>
+                                        </div>
+                                    </div>
+                                </li>
+                            </div> -->
+                            <div class="my-2 col-12 order-md-2 text-left">
+                                <h6 class="h5 mb-0 pb-0">Informações Adcionais</h6>
+                                <hr class="my-2 p-0" />
+
+                                <form (change)="isChangeAdditionalInformationForm = true"
+                                    (keyup)="isChangeAdditionalInformationForm = true"
+                                    [formGroup]="additionalInformationForm"
+                                    (ngSubmit)="setCandidate(additionalInformationForm.value)">
+
+                                    <textarea formControlName="additional_information" class="form-control"
+                                        placeholder="Informações" rows="3" resize="none"></textarea>
+
+                                    <div class="px-0 pt-3 col-12 col-sm-12 col-lg-12">
+                                        <button *ngIf="!isLoading && isChangeAdditionalInformationForm"
+                                            class="btn-block btn btn-dark btn-sm">
+                                            <i class="fas fa-check"></i> Salvar
+                                        </button>
+
+                                        <button *ngIf="isLoading && isChangeAdditionalInformationForm"
+                                            class="btn-block btn btn-dark btn-sm">
+                                            <span class="spinner-border spinner-border-sm" role="status"
+                                                aria-hidden="true"></span>
+                                            <span class="sr-only">Loading...</span>
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="my-2 col-12 order-md-2 text-left">
+                                <h6 class="h5 mb-0 pb-0">Mensagem de Apresentação</h6>
+                                <hr class="my-2 p-0" />
+
+                                <form (change)="isChangeIntroductoryMessageForm = true"
+                                    (keyup)="isChangeIntroductoryMessageForm = true"
+                                    [formGroup]="introductoryMessageForm"
+                                    (ngSubmit)="setCandidate(introductoryMessageForm.value)">
+
+                                    <textarea formControlName="introductory_message" class="form-control"
+                                        placeholder="Informações" rows="3" resize="none"></textarea>
+
+                                    <div class="px-0 pt-3 col-12 col-sm-12 col-lg-12">
+                                        <button *ngIf="!isLoading && isChangeIntroductoryMessageForm"
+                                            class="btn-block btn btn-dark btn-sm">
+                                            <i class="fas fa-check"></i> Salvar
+                                        </button>
+
+                                        <button *ngIf="isLoading && isChangeIntroductoryMessageForm"
+                                            class="btn-block btn btn-dark btn-sm">
+                                            <span class="spinner-border spinner-border-sm" role="status"
+                                                aria-hidden="true"></span>
+                                            <span class="sr-only">Loading...</span>
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Modal -->
+<!-- <div class="modal  fade" id="modal_1" tabindex="-1" role="dialog" aria-labelledby="modal_1" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8 text-center py-4">
+                        <h6 class="h3">Unleash your creativity!</h6>
+                        <p class="lead text-muted">
+                            You can easy create stackable modal boxes. For example, your inline content or Ajax response can contain a gallery:
+                        </p>
+                        <div class="py-7">
+                            <img src="../../assets/img/svg/icons/Apps.svg" class="img-fluid img-center svg-inject">
+                        </div>
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">Let's do this!</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> -->
+
+<div class="modal fade MyCredit" tabindex="-1" role="dialog" aria-labelledby="MyCredit" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h5 class="modal-title h5" id="myExtraLargeModalLabel">Meus Créditos</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row justify-content-center">
+                    <div class="col-12 col-lg-6 text-center">
+                        <div class="card shadow-none w-100">
+                            <div class="p-3 d-flex">
+                                <div>
+                                    <div class="icon icon-shape rounded-circle bg-gradient-danger text-white mr-4">
+                                        <i data-feather="chevron-up" class="text-success"></i>
+                                        <i class="fas fa-gift"></i>
+                                    </div>
+                                </div>
+                                <div>
+                                    <span class="h6">Bônus : <strong>{{reward_balance?.BONUS}} Envios</strong></span>
+                                    <p class="text-sm text-muted mb-0">
+                                        válidos até 31/08/219
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-6 text-center">
+                        <div class="card shadow-none w-100">
+                            <div class="p-3 d-flex">
+                                <div>
+                                    <div class="icon icon-shape rounded-circle bg-gradient-success text-white mr-4">
+                                        <i class="fas fa-wallet"></i>
+                                    </div>
+                                </div>
+                                <div>
+                                    <span class="h6">Créditos : {{reward_balance?.CREDIT}} Envios</span>
+                                    <p class="text-sm text-muted mb-0">
+                                        válidos por um ano.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-lg-12 text-left">
+                        <h6 class="h5 mb-0 pb-3"> Pacotes disponíveis</h6>
+                        <div class="row justify-content-center">
+                            <div class="col-12 col-lg-6 text-center">
+                                <ul class="list-group">
+                                    <li *ngFor="let reward of rewards"
+                                        class="list-group-item d-flex justify-content-between align-items-center">
+                                        <label>{{reward.description}} </label>
+                                        <label>
+                                            <!-- <strong>R$ {{reward.price}} </strong> -->
+                                            <span (click)="pay(reward)" class="badge badge-primary badge-pill p-2">Comprar</span></label>
+                                    </li>
+                                    <!-- <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        <label>Pacote com 10 envios <span class="text-danger">+ Destaque</span>:</label>
+                                        <label><strong>R$ 15,00 </strong>
+                                            <span class="badge badge-primary badge-pill p-2">Comprar</span></label>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        <label>Pacote com 20 envios de currículos:</label>
+                                        <label><strong>R$ 17,00 </strong>
+                                            <span class="badge badge-primary badge-pill p-2">Comprar</span></label>
+                                    </li> -->
+
+                                </ul>
+                                <nav *ngIf="rewards" aria-label="Page navigation example">
+                                    <ul class="mt-2 pagination justify-content-end">
+                                        <li class="page-item" *ngIf="currentPageReward > 1">
+                                            <a class="page-link" (click)="getRewards(currentPageReward-1)">Voltar</a>
+                                        </li>
+        
+                                        <li *ngIf="currentPageReward !== lastPageReward" class="page-item">
+                                            <a class="page-link" (click)="getRewards(currentPageReward+1)" >Próximo</a>
+                                        </li>
+                                    </ul>
+                                </nav>
+
+                            </div>
+                            <div class="col-12 col-lg-6 text-center">
+                                <img class="w-50" src="assets/img/svg/illustrations/illustration-2.svg">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade resumeSent" tabindex="-1" role="dialog" aria-labelledby="resumeSent" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h4 class="modal-title h4" id="myExtraLargeModalLabel">Curriculo Enviados </h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row justify-content-center">
+                    <div class="col-12 col-lg-12 text-left">
+                        <div class="row justify-content-center">
+
+                            <div class="col-12 col-lg-8 text-left order-2 order-lg-2 ">
+                                <div class="my-1 col-12 ordem-1 order-lg-1 ">
+                                    <p class="h6 text-dark">Em andamento:</p>
+                                </div>
+                                <ul class="list-group">
+                                    <li *ngFor="let itemSubscription of subscription?.data"
+                                        class="list-group-item d-flex justify-content-between align-items-center">
+                                        <div class="row w-100 align-items-start">
+                                            <div class="mx-0 px-0 col-12 col-sm-8 col-lg-4">
+                                                <strong>Vaga: </strong> {{itemSubscription.job.title}} <br />
+                                                <strong>Empresa: </strong>{{itemSubscription.job.company?.name}} <br />
+                                            </div>
+                                            <div class="mx-0 px-0  col-12 col-sm-4 col-lg-3">
+                                                <strong>Enviado em
+                                                </strong>{{ itemSubscription.created_at | date:"dd/MM/yyyy" }}
+                                            </div>
+                                            <div class="mx-0 px-0  col-6 col-sm-4 col-lg-3">
+                                                <strong>Status: </strong>{{itemSubscription.status}}
+                                            </div>
+                                            <div class="mx-0 px-0  col-12 col-sm-4 col-lg-2">
+                                                <button (click)="setSubscription(itemSubscription.id)"
+                                                    class="d-block btn btn-sm btn-outline-danger btn-block mt-0">Desistir
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="my-2 col-8 col-lg-4 text-center order-1 order-lg-3">
+                                <img class="w-100" src="assets/img/svg/illustrations/sent.png">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade notification" tabindex="-1" role="dialog" aria-labelledby="notification" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title h4" id="myExtraLargeModalLabel">Notificações</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row justify-content-center">
+                    <div class="col-12 col-lg-12 text-left">
+                        <div class="row justify-content-center">
+                            <div class="col-12 col-lg-8 text-left order-lg-1 order-2 ">
+                                <ul class="list-group">                                    
+                                    <li *ngFor="let notification of notifications" class="list-group-item d-flex justify-content-between align-items-center">
+                                        <div class="row w-100 align-items-center ">
+                                            <div class="col-11 col-sm-10 col-lg-10">
+                                                <strong class="h6">Sistema: </strong> <label [innerHTML]="notification.message"></label> <a [href]="notification.url" class="text-info"> Ver</a><br />
+                                            </div>
+                                            <div class="mx-0 px-0 col-1 col-sm-2 col-lg-2 text-warning text-center">
+                                                <i class="fas fa-2x fa-bell"></i>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="my-2 col-8 col-lg-4 text-center order-lg-2 order-1 ">
+                                <img class="w-100" src="assets/img/svg/illustrations/notification.jpg">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<div class="modal fade candidateObjective" tabindex="-1" role="dialog" aria-labelledby="candidateObjective"
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title h4" id="myExtraLargeModalLabel">Objetivo profissional</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row justify-content-center">
+                    <div class="col-12 col-lg-12 text-left">
+                        <select [(ngModel)]="selectedObjective" class="custom-select custom-select-sm"
+                            placeholder="Objetivo">
+                            <!-- <option [ngValue]="null" disabled>Objetivos</option> -->
+                            <option [ngValue]="itemCbo.id" *ngFor="let itemCbo of cboAvailable">{{itemCbo.name}}
+                            </option>
+                        </select>
+                        <button (click)="setCandidateObjective()" type="button" class="mt-4 btn btn-dark btn-block">
+                            <i class="fas fa-check"></i> Adicionar
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div data-backdrop="static" class="modal fade candidateExperience" tabindex="-1" role="dialog"
+    aria-labelledby="candidateExperience" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title h4" id="myExtraLargeModalLabel">Experiência profissional</h4>
+                <button (click)="resetFill()" type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row justify-content-center">
+                    <div class="col-12 col-lg-12 text-left">
+                        <form [formGroup]="candidateExperienceForm">
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <input required formControlName="company" class="form-control" type="text"
+                                            placeholder="Nome da Empresa">
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <!-- <select formControlName="occupation" class="custom-select "
+                                            placeholder="Objetivo">
+                                             <option [ngValue]="null" disabled>Cargo</option> 
+                                            <option [ngValue]="itemCbo.id" *ngFor="let itemCbo of cbo">
+                                                {{itemCbo.name}}
+                                            </option>
+                                        </select> -->
+
+                                        <input required formControlName="occupation" class="form-control" type="text"
+                                            placeholder="Cargo/função">
+
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <textarea required maxlength="200" formControlName="activities"
+                                            class="form-control" rows="3" resize="none"
+                                            placeholder="Atividades"></textarea>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <input minlength="10" required formControlName="initial_date"
+                                            class="form-control date" type="text" placeholder="Data Entrada">
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div *ngIf="!isCurrentjob" class="form-group">
+                                        <input id="final_date" minlength="10" formControlName="final_date"
+                                            class="date form-control" type="text" placeholder="Data Sainda">
+                                    </div>
+                                </div>
+                                <div class="col-md-4 pt-2">
+                                    <div class="form-row">
+                                        <span class="mt-1 mx-1 form-group">Atual Emprego: </span>
+                                        <label class=" form-group switch__container d-block">
+                                            <input (click)="currentJob($event.target.checked)" id="currentJob"
+                                                class="switch switch--shadow" type="checkbox" />
+                                            <label (click)="currentJob($event.target.checked)" for="currentJob"></label>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 pt-2">
+                                    <button *ngIf="candidateExperienceForm.get('id').value && !isLoading"
+                                        (click)="deleteExperience(candidateExperienceForm.value)"
+                                        class="btn btn-block btn-sm  btn-outline-danger btn-block ">
+                                        Remover
+                                    </button>
+                                    <button *ngIf="candidateExperienceForm.get('id').value && isLoading"
+                                        (click)="deleteExperience(candidateExperienceForm.value)"
+                                        class="btn btn-block btn-sm  btn-outline-danger btn-block ">
+                                        <span class="spinner-border spinner-border-sm" role="status"
+                                            aria-hidden="true"></span>
+                                        Loading...
+                                    </button>
+                                </div>
+
+                            </div>
+
+                            <button *ngIf="!candidateExperienceForm.get('id').value && !isLoading"
+                                (click)="createExperience(candidateExperienceForm.value)"
+                                [disabled]="candidateExperienceForm.invalid" type="submit"
+                                class="mt-4 btn btn-dark btn-block btn-sm">
+                                <i class="fas fa-check"></i> Adicionar
+                            </button>
+
+                            <button *ngIf="candidateExperienceForm.get('id').value && !isLoading"
+                                (click)="updateExperience(candidateExperienceForm.value)"
+                                [disabled]="candidateExperienceForm.invalid" type="submit"
+                                class="mt-4 btn btn-dark btn-block btn-sm">
+                                <i class="fas fa-check"></i> Atualizar
+                            </button>
+
+                            <button *ngIf="isLoading" class=" mt-4 btn btn-dark btn-block" type="button" disabled>
+                                <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                                Loading...
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div data-backdrop="static" class="modal fade candidateSkill" tabindex="-1" role="dialog"
+    aria-labelledby="candidateExperience" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title h4" id="myExtraLargeModalLabel">Formação,Cursos e Expertizes</h4>
+                <button (click)="resetFill()" type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row justify-content-center">
+                    <div class="col-12 col-lg-12 text-left">
+                        <form [formGroup]="candidateSkillForm">
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <input required formControlName="skill" class="form-control" type="text"
+                                            placeholder="Área de estudo">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <select required formControlName="type" class="custom-select custom-select">
+                                            <option [ngValue]="null" disabled>Grâu</option>
+                                            <option [ngValue]="'Curso técnico'">Curso</option>
+                                            <option [ngValue]="'Curso técnico'">técnico</option>
+                                            <option [ngValue]="'Certificação'">Certificação</option>
+                                            <option [ngValue]="'Graduação'">Graduação</option>
+                                            <option [ngValue]="'Pós-Graduação'">Pós-Graduação</option>
+                                            <option [ngValue]="'MBA'">MBA</option>
+                                            <option [ngValue]="'Bacharelado'">Bacharelado</option>
+                                            <option [ngValue]="'Licenciatura'">Licenciatura</option>
+                                            <option [ngValue]="'Mestrado'">Mestrado</option>
+                                            <option [ngValue]="'Doutorado'">Doutorado</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <input required formControlName="company" class="form-control" type="text"
+                                            placeholder="Nome da Empresa">
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <input required formControlName="work_load" class="form-control" type="text"
+                                            placeholder="Duração (Em horas)">
+                                    </div>
+                                </div>
+                                <!-- <div class="col-md-4 pt-2">
+                                    <div class="form-row">
+                                        <span class="mt-1 mx-1 form-group">Atual Emprego: </span>
+                                        <label class=" form-group switch__container d-block">
+                                            <input (click)="currentJob($event.target.checked)" id="currentJob"
+                                                class="switch switch--shadow" type="checkbox" />
+                                            <label (click)="currentJob($event.target.checked)" for="currentJob"></label>
+                                        </label>
+                                    </div>
+                                </div> -->
+                                <div class="col-md-2 pt-2">
+                                    <button *ngIf="candidateSkillForm.get('id').value && !isLoading"
+                                        (click)="deleteSkill(candidateSkillForm.value)"
+                                        class="btn btn-block btn-sm  btn-outline-danger btn-block ">
+                                        Remover
+                                    </button>
+                                    <button *ngIf="candidateSkillForm.get('id').value && isLoading"
+                                        (click)="deleteSkill(candidateSkillForm.value)"
+                                        class="btn btn-block btn-sm  btn-outline-danger btn-block ">
+                                        <span class="spinner-border spinner-border-sm" role="status"
+                                            aria-hidden="true"></span>
+                                        Loading...
+                                    </button>
+                                </div>
+
+                            </div>
+
+                            <button *ngIf="!candidateSkillForm.get('id').value && !isLoading"
+                                (click)="createSkill(candidateSkillForm.value)" [disabled]="candidateSkillForm.invalid"
+                                type="submit" class="mt-4 btn btn-dark btn-block btn-sm">
+                                <i class="fas fa-check"></i> Adicionar
+                            </button>
+
+                            <button *ngIf="candidateSkillForm.get('id').value && !isLoading"
+                                (click)="updateSkill(candidateSkillForm.value)" [disabled]="candidateSkillForm.invalid"
+                                type="submit" class="mt-4 btn btn-dark btn-block btn-sm">
+                                <i class="fas fa-check"></i> Atualizar
+                            </button>
+
+                            <button *ngIf="isLoading" class=" mt-4 btn btn-dark btn-block" type="button" disabled>
+                                <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                                Loading...
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

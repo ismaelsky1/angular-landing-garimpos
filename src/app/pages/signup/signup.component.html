@@ -1,0 +1,65 @@
+<section class="slice py-2  background">
+    <div class="container">
+        <div *ngIf="!isRegistered" class="row row row-grid align-items-center  justify-content-center">
+            <div class="pt-lg-5 pb-lg-5 pt-3 col-12 col-md-12 col-lg-11 order-md-2 text-center">
+                <span class="h1 text-white shadow">Cadastre-se</span>
+            </div>
+            <div class="col-12 col-md-12 col-lg-11 order-md-2 text-center">
+                <form class="card w-100 text-left" autocomplete="off" [formGroup]="formSignUp" (ngSubmit)="onSubmit()">
+                    <div class="form-row p-5">
+                        <div class="form-group col-12">
+                            <span class="h3 my-5">Dados Pessoais</span>
+                        </div>
+                        <div *ngIf="alert.isAlert" class="form-group col-12 col-lg-12 alert {{alert.styleAlert}}" role="alert">
+                            <strong>{{alert.titleAlert}}:</strong> {{alert.messageAlert}}
+                        </div> 
+                        <div class="form-group col-12 col-lg-6">
+                            <label class="form-control-label">Nome Completo</label>
+                            <input required formControlName="name" type="text" class="form-control" placeholder="">
+                        </div>
+                        <div class="form-group col-12 col-lg-6">
+                            <label class="form-control-label">Celular</label>
+                            <input required formControlName="cellphone" type="tel" class="form-control phone_with_ddd" placeholder="(00) 0 0000-0000">
+                        </div>
+                        <div class="form-group col-12">
+                            <label class="form-control-label">Email</label>                            
+                            <input required formControlName="email" type="email" class="form-control" placeholder="exemplo@exemplo.com">
+                        </div>
+                        <div class="form-group col-12 col-lg-6">
+                            <label class="form-control-label">Confirmar senha</label>
+                            <input required formControlName="password" type="password" class="form-control" placeholder="******">
+                            <small class="form-text text-muted mt-2">Sua senha deve conter no mínimo 6 caracteres</small>
+                        </div>
+                        <div class="form-group col-12 col-lg-6">
+                            <label class="form-control-label">Senha</label>
+                            <input required formControlName="ValidatePassword" [ngClass]="{'is-invalid': isInvalid === true}" type="password" class="form-control"
+                                placeholder="******">
+                        </div>                        
+                        <div class="form-group col-12 my-4">
+                            <div class="custom-control custom-checkbox">
+                                <input required formControlName="terms" type="checkbox" class="custom-control-input"
+                                    id="customCheck1">
+                                <label class="custom-control-label" for="customCheck1">Estou de acordo com os termos de
+                                    uso</label>
+                            </div>
+                        </div>                        
+                        <div class="form-group col-12 text-center">
+                            <button type="submit" [disabled]="formSignUp.invalid" class="text-white btn custom-btn-primary">
+                                Cadastrar-se
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div *ngIf="isRegistered" class=" card row row row-grid align-items-center  justify-content-center">
+            <div class="pt-lg-5 pb-lg-2 pt-7 col-12 col-md-12 col-lg-11 order-md-2 text-center">
+                <p class="h3 text-dark">Confirmar Cadastro !</p>
+                <p class="h6 text-muted">Por favor confirme seu cadastro pelo link enviado ao email: </p>
+            </div>
+            <div class="pb-5 col-12 col-md-12 col-lg-11 order-md-2 text-center">
+                <p class="h3 text-warning">{{ formSignUp.get('email').value }} </p>
+            </div>
+        </div>
+    </div>
+</section>

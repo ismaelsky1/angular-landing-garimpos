@@ -1,0 +1,16 @@
+<section class="slice py-5">
+    <div class="container">
+        <div class="row row-grid align-items-center justify-content-center">
+            <div class="col-12 col-md-4 col-lg-5 order-md-2 text-center">
+                <!-- Image -->
+                <div *ngIf="error" class="alert alert-danger" role="alert">
+                    {{error}}
+                  </div>
+                <figure *ngIf="confirmed" class="w-100">
+                    <img alt="Image placeholder" src="assets/img/svg/illustrations/verified-email.png"
+                        class="img-fluid mw-md-120">
+                </figure>
+            </div>           
+        </div>
+    </div>
+</section>

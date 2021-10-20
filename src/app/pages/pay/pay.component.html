@@ -1,0 +1,151 @@
+<div class="container pt-3">
+    <div class="row">
+        <div class="col-md-4 order-md-2 mb-4">
+            <h4 class="d-flex justify-content-between align-items-center mb-3">
+                <span class="text-dark">Pacote</span>
+            </h4>
+            <ul class="list-group mb-3">
+                <li class="list-group-item d-flex justify-content-between lh-condensed">
+                    <div>
+                        <h6 class="my-0">{{package.quantity| number: ""}} Envios</h6>
+                        <small class="text-muted"></small>
+                    </div>
+                    <span class="text-muted">R$ {{package.price}}</span>
+                </li>
+            </ul>
+        </div>
+        <div class="col-md-8 order-md-1">
+            <h4 class="mb-3">Endereço do candidato</h4>
+            <form class="needs-validation" novalidate="" (ngSubmit)="next()" [formGroup]="checkOutForm">
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label for="firstName">Nome Completo</label>
+                        <input required formControlName="name" type="text" class="form-control form-control-sm" id="firstName"
+                            placeholder="" value="" required="">
+                        <div class="invalid-feedback">
+                            Valid first name is required.
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="mb-3 col-md-6">
+                        <label for="email">Email </label>
+                        <input required disabled formControlName="email" type="email" class="form-control form-control-sm" id="email"
+                            placeholder="you@example.com">
+                        <div class="invalid-feedback">
+                            Please enter a valid email address for shipping updates.
+                        </div>
+                    </div>
+                    <div class="mb-3 col-md-6">
+                        <label for="document">CPF</label>
+                        <input required mask="000.000.000-00" formControlName="document" type="tel"
+                            class="form-control form-control-sm cpf" id="CPF">
+                        <div class="invalid-feedback">
+                            Please enter a valid email address for shipping updates.
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col-md-6 mb-3">
+                        <label for="street">Endereço</label>
+                        <input required formControlName="street" type="text" class="form-control form-control-sm" id="address"
+                            placeholder="1234 Main St" required="">
+                        <div class="invalid-feedback">
+                            Please enter your shipping address.
+                        </div>
+                    </div>                    
+                    <div class="col-md-6">
+                        <label for="city">Cidade</label>
+                        <select required formControlName="city" class="custom-select custom-select-sm">
+                            <option [ngValue]="null" disabled>Cidade</option>
+                            <option [ngValue]="city.name" *ngFor="let city of citys">{{city.name}}
+                            </option>
+                        </select>
+                    </div>
+                    <div class="col-md-6 my-1">
+                        <label for="district">Bairro</label>
+                        <input required formControlName="district" type="text" class="form-control form-control-sm"
+                            placeholder="Bairro">
+                    </div>
+                    <div class="col-md-3 col-sm-2 my-1">
+                        <label for="number">Nº</label>
+                        <input required formControlName="number" type="text" class="form-control form-control-sm"
+                            placeholder="Nº">
+                    </div>
+                    <div class="col-md-3 my-1">
+                        <label for="complement">Complemento</label>
+                        <input required formControlName="complement" type="text" class="form-control form-control-sm"
+                            placeholder="">
+                    </div>
+
+                    <div class="col-12 col-sm-3 my-1">
+                        <label for="reference">Ponto de referência</label>
+                        <input required formControlName="reference" type="text" class="form-control form-control-sm"
+                            placeholder="">
+                    </div>
+                    <div class="col-md-3 my-1">
+                        <label for="reference">CEP</label>
+                        <input required mask='00000-000' formControlName="zipcode" type="text" class="form-control form-control-sm"
+                            placeholder="00000-000">
+                    </div>
+                </div>
+                <hr class="mb-4">
+                <h4 class="mb-3">Forma de pagamento</h4>
+                <div class="d-block my-3">
+                    <div class="custom-control custom-radio">
+                        <input (click)="formOfPayment('BOLETO')" id="debit" checked="" name="paymentMethod" type="radio"
+                            class="custom-control-input" required="">
+                        <label class="custom-control-label" for="debit">Boleto</label>
+                    </div>
+                    <div class="custom-control custom-radio">
+                        <input (click)="formOfPayment('CARD')" id="credit" name="paymentMethod" type="radio"
+                            class="custom-control-input"  required="">
+                        <label class="custom-control-label" for="credit">Cartão de crédito</label>
+                    </div>
+                </div>
+               <!-- <hr class="mb-4">
+                 <div *ngIf="formPaymente == 'BOLETO'" class="card">
+                    <div class="card-body">
+                        Detalhes do Boleto.
+                    </div>
+                </div> -->
+
+                <div *ngIf="formPaymente == 'CARD'" class="isCard" class="row">
+                    <div class="col-md-6 mb-3">
+                        <label for="cc-name">Nome</label>
+                        <input formControlName="fullName" type="text" class="form-control form-control-sm" id="cc-name">
+                        <small class="text-muted">Nome completo do cartão</small>
+                        <div class="invalid-feedback">
+                            Name on card is required
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="cc-number">Numero do cartão</label>
+                        <input formControlName="numberCard" type="text" class="form-control form-control-sm" id="cc-number">
+                        <div class="invalid-feedback">
+                            Credit card number is required
+                        </div>
+                    </div>
+
+                    <div class="col-md-3 mb-3">
+                        <label for="cc-expiration">Data Venc.</label>
+                        <input mask="00/0000" [dropSpecialCharacters]="false" formControlName="dateVenc" type="text" class="dt_venc form-control form-control-sm" id="cc-expiration">
+                        <div class="invalid-feedback">
+                            Expiration date required
+                        </div>
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <label for="cc-expiration">CVV</label>
+                        <input maxlength="3" formControlName="cvv" type="text" class="form-control form-control-sm" id="cc-cvv"
+                            placeholder="">
+                        <div class="invalid-feedback">
+                            Security code required
+                        </div>
+                    </div>
+                </div>
+                <button [disabled]="checkOutForm.invalid" class="my-3 btn btn-dark btn-lg btn-block"
+                    type="submit">Continue</button>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,42 @@
+.background {
+    background-image: url("/assets/img/banner/banner5/3219699.jpg");
+    background-size: 100%;
+    background-repeat: no-repeat;
+}
+.shadow {
+    text-shadow: 2px 2px 5px black;
+}
+.img_jobs {
+    height: 100px;
+    width: 100px;
+}
+
+// .modal-dialog{
+//     width: 100%;
+//     min-width: 70%;
+//     margin-top: 0px;
+//     height: 100%;
+//    // width: 50% !important;
+// }
+// .modal-content{
+//     border: 0;
+//     border-radius: 0px;
+//     height: 100%;
+// }
+
+.upload_img {
+    //position: relative;  
+    //top: 20px;
+    display: none;
+    opacity: 0;
+}
+.lblUploadImage{
+    position: relative;
+    top: -10px;
+    border: 1px solid;
+    border-radius: 8px;
+    padding: 3px;
+    padding-left: 5px;
+    padding-right: 5px;
+    margin: 0px;
+}

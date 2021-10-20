@@ -1,0 +1,131 @@
+<section class="slice py-2  background">
+    <div class="container">
+        <div class="row row-grid align-items-center justify-content-center">
+            <div class="pt-lg-5 pb-lg-5 pt-7 col-12 col-md-12 col-lg-11 order-md-2 text-center">
+                <span class="h1 text-white shadow">{{dataJob?.title}}</span>
+            </div>
+            <div class="card col-12 col-md-12 col-lg-11 order-md-2 text-center">
+                <div class="container">
+                    <div class="row row-grid align-items-center justify-content-center">
+                        <div class="col-6 col-md-2 col-lg-2 order-md-1 text-center ">
+                            <img class="mt-3 img_jobs p-1" src="assets/img/clients/160x160/img-1.png">
+                        </div>
+                        <div class="text-md-left   col-md-7 order-md-2">
+                            <label class="h5"> {{dataJob?.company.name}} </label>
+                            <p class="text-sm text-muted mb-0">
+                                {{dataJob?.city.name}}-{{dataJob?.city.state.name}} 
+                            </p>
+                        </div>
+                        <!-- <div class="col-md-3 col-lg-2 order-md-3 text-center ">
+                            <label class="h6"><i class="fas fa-map-marker-alt"></i>
+                                {{dataJob?.city.name}}-{{dataJob?.city.state.name}} </label>
+                        </div> -->
+                        <div class="col-12 col-md-3  order-md-4 text-center">
+                            <button (click)="subscribe()" class="btn btn-dark btn-sm btn-block">Inscrever-se</button>
+                        </div>
+                    </div>
+                    <div class="row row-grid align-items-center justify-content-start">
+                        <div class="col-12 order-md-2 text-left ">
+                            <h6 class="h5 mb-0 pb-0"> Descrição da vaga </h6>
+                            <hr class="my-2 p-0" />
+                            <p class="text-muted mb-0">Salario de {{dataJob?.salary.name}}, {{dataJob?.work_hour.name}} para o
+                                genero: <label *ngIf="dataJob?.gender == 'M'">Masculino</label><label
+                                    *ngIf="dataJob?.gender == 'F'">Feminino</label>, {{dataJob?.experiences}}</p>
+                           
+                            <p class="text-left m-0 p-0"></p>
+
+
+                        </div>
+                        <div class="my-2 col-12 order-md-2 text-left ">
+                            <h6 class="h5 mb-0 pb-0"> Características Humanas </h6>
+                            <hr class="my-2 p-0" />
+                            <p class="text-left m-0 p-0">{{dataJob?.human_characteristics}}</p>
+                        </div>
+                        <div class="my-2 col-12 order-md-2 text-left ">
+                            <h6 class="h5 mb-0 pb-0">Características Técnicas</h6>
+                            <hr class="my-2 p-0" />
+                            <p class="text-left m-0 p-0">{{dataJob?.technical_characteristics}} </p>
+                        </div>
+                        <div class="my-2 col-12 order-md-2 text-left ">
+                            <h6 class="h5 mb-0 pb-0">Informações Adicionais</h6>
+                            <hr class="my-2 p-0" />
+                            <p class="text-left m-0 p-0">{{dataJob?.observations}} </p>
+                        </div>
+                        <div class="my-2 col-12 order-md-2 text-left ">
+                            <h6 class="h6">Compartilhe:</h6>
+                            <ul class="nav m-4">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="https://www.facebook.com/" target="_blank">
+                                        <i class="fab fa-2x fa-facebook-square"></i>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="https://github.com/" target="_blank">
+                                        <i class="fab fa-2x fa-linkedin-in"></i>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="https://www.instagram.com/" target="_blank">
+                                        <i class="fas fa-2x fa-envelope"></i>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="https://www.instagram.com/" target="_blank">
+                                        <i class="fas fa-2x fa-link"></i>
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+<div class="modal modal-dark fade" id="modal_success" tabindex="-1" role="dialog" aria-labelledby="modal_success"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+
+            <div class="modal-body">
+                <div class="py-3 text-center">
+                    <i class="fas fa-exclamation-circle fa-4x"></i>
+                    <h5 class="heading h3 mt-4">Parabéns</h5>
+                    <p>
+                        Você se inscreveu para <strong> {{dataJob?.title}}</strong>
+                    </p>
+                    <button type="button" class="w-50 btn btn-sm btn-outline-white rounded-pill" data-dismiss="modal">
+                        OK </button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<div class="modal modal-danger fade" id="modal_danger" tabindex="-1" role="dialog" aria-labelledby="modal_danger"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+
+            <div class="modal-body">
+                <div class="py-3 text-center">
+                    <i class="fas fa-exclamation-circle fa-4x"></i>
+                    <h5 class="heading h3 mt-4">Ops...</h5>
+                    <p>
+                        Voce já esta inscrito para <strong> {{dataJob?.title}}</strong>
+                    </p>
+                    <button type="button" class="w-50 btn btn-sm btn-outline-white rounded-pill" data-dismiss="modal">
+                        Cancelar </button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

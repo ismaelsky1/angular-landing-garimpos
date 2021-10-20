@@ -1,0 +1,32 @@
+<section class="slice py-2  background">
+    <div class="container">
+        <div class="row row row-grid align-items-center justify-content-center">
+            <div class="pt-lg-10 pb-lg-10 pt-5 col-12 col-md-12 col-lg-11 order-md-2 text-center">
+                <span class="h1 text-white shadow">Recuperação de Senha</span>
+            </div>
+            <div class="col-11 col-md-10 col-lg-10 order-md-2 text-center">
+                <form class="card w-100" autocomplete="off" [formGroup]="formSignIn" (ngSubmit)="onSubmit()">
+                    <div class="form-row p-5 justify-content-center">
+                        <div class="form-group col-12">
+                            <span class="h3 my-5"> </span>
+                        </div>  
+                        <div *ngIf="isAlert" class="form-group col-12 col-lg-6 alert {{styleAlert}}" role="alert">
+                            <strong>{{titleAlert}}:</strong> {{messageAlert}}
+                        </div>                    
+                        <div class="form-group col-12 col-lg-6 mx-10">
+                            <input required formControlName="password" type="email" class="form-control" placeholder="Nova Senha">
+                        </div>
+                        <div class="form-group col-12 col-lg-6 mx-10">
+                            <input required formControlName="confirm_password" type="password" class="form-control" placeholder="Confirme Senha">
+                        </div> 
+                        <div class="form-group col-12 text-center">
+                            <button type="submit" [disabled]="formSignIn.invalid" class="btn btn-outline-primary">
+                                Redefinir Senha
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>

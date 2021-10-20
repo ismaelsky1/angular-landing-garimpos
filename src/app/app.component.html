@@ -1,0 +1,164 @@
+<nav class="shadow-sm navbar navbar-expand-lg navbar-light bg-white mb-0 pb-0">
+    <div class="container mb-0 pb-0">
+
+        <!-- Brand -->
+        <a class="navbar-brand " [routerLink]="['/']">
+            <img alt="Image placeholder" src="assets/img/brand/logo.png" id="navbar-logo">
+        </a>
+
+        <!-- Toggler -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+            aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Collapse -->
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav mt-0 mt-lg-0 ml-auto">
+                <li class="nav-item ">
+                    <a class="nav-link"  [routerLink]="['/search']">Vagas</a>
+                </li>
+                <li class="nav-item ">
+                    <a class="nav-link" [routerLink]="['/contato']"> Contato </a>
+                </li>
+                <li class="nav-item text-white ">
+                    ------
+                </li>
+
+                <li *ngIf="!isLogin" class="nav-item ">
+                    <a class="nav-link" [routerLink]="['/signin']"> Login</a>
+                </li>
+                
+          
+
+                <!-- IF LOGIM ***************** -->
+                <li *ngIf="isLogin" class="nav-item dropdown dropdown-animate" data-toggle="hover">
+                    
+                    <a><img alt="Image placeholder" class="nav-link" href="#" role="button" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false" [src]="avatar"
+                            class="mt-2 mb-3 ml-3 avatar rounded-circle"></a>
+                    <div class="dropdown-menu dropdown-menu-single">
+                        <a [routerLink]="['/candidate']"  class="dropdown-item">Meu perfil</a>
+                        <a [routerLink]="['/change-password/change']"  class="dropdown-item">Mudar Senha</a>
+                        <div class="dropdown-divider"></div>
+                        <a (click)="logout()" class="dropdown-item">Sair</a>
+                    </div>
+                </li>
+
+            </ul>
+
+            <!-- Button -->
+
+            <a *ngIf="!isLogin" [routerLink]="['/signup']" routerLinkActive="router-link-active"
+                class="custom-btn-primary navbar-btn btn btn-sm btn-dark d-none d-lg-inline-block ml-3 text-white">
+                Inscrever-se
+            </a>
+
+            <!-- Mobile button -->
+            <div *ngIf="!isLogin" class="d-lg-none text-center">
+                <a [routerLink]="['/signup']" class="custom-btn-primary btn btn-block btn-sm btn-dark">Inscrever-se</a>
+            </div>
+        </div>
+    </div>
+</nav>
+<router-outlet></router-outlet>
+
+<footer class="position-relative" id="footer-main">
+    <div class="footer pt-lg-7 footer-dark bg-dark">
+        <!-- SVG shape -->
+        <div class="shape-container shape-line shape-position-top shape-orientation-inverse">
+            <svg width="2560px" height="100px" xmlns="http://www.w3.org/2000/svg"
+                xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="none" x="0px" y="0px"
+                viewBox="0 0 2560 100" style="enable-background:new 0 0 2560 100;" xml:space="preserve"
+                class="">
+                <polygon points="2560 0 2560 100 0 100"></polygon>
+            </svg>
+        </div>
+        <!-- Footer -->
+        <div class="container pt-0">
+            <div class="row align-items-end justify-content-md-between ">
+                <div class="col-lg-4 mb-2 mb-lg-0">
+                    <!-- Theme's logo -->
+                    <a href="index.html">
+                        <img alt="Image placeholder" src="assets/img/brand/logo-white.png" id="footer-logo"
+                            class="img_footer">
+                    </a>
+                    <!-- Webpixels' mission -->
+                    <p class="mt-4 text-sm opacity-8 pr-lg-4">Encontre o emprego dos sonhos.</p>
+                    <!-- Social -->
+
+                </div>
+                <div class="col-lg-3 col-sm-12 col-12 pb-2 mb-lg-0">
+                    <ul class="nav mt-0">
+                        <li class="nav-item">
+                            <a class="nav-link" href="https://github.com/" target="_blank">
+                                <i class="fab fa-2x fa-linkedin-in"></i>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="https://www.instagram.com/" target="_blank">
+                                <i class="fab fa-2x fa-instagram"></i>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="https://www.facebook.com/" target="_blank">
+                                <i class="fab fa-2x fa-facebook"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- <div class="col-lg-4 col-12 col-sm-12 ml-lg-auto mb-2 mb-lg-0">
+                    <h6 class="heading mb-3 text-center pr-lg-4">Contato</h6>
+                    <ul class="list-unstyled">
+                        <li><a [routerLink]="['/vagas']">Lista de vagas</a></li>
+                    </ul> 
+                   
+                </div>
+                <div class="col-lg-4 col-12 col-sm-12 ml-lg-auto mb-2 mb-lg-0">
+                    <h6 class="heading mb-3 text-center pr-lg-4">Termos de Uso</h6>
+                     <ul class="list-unstyled">
+                        <li><a [routerLink]="['/vagas']">Lista de vagas</a></li>
+                    </ul> 
+                     <p class="mt-4 text-sm opacity-8 pr-lg-4 text-center">
+                        (77) 9 9999-9999 <br>
+                        contato@garimpos.com.br
+                    </p> 
+                </div> -->
+
+            </div>
+            <hr class="divider divider-fade divider-dark my-2">
+            <div class="row align-items-center justify-content-md-between pb-4">
+                <div class="col-md-6">
+                    <div class="copyright text-sm font-weight-bold text-center text-md-left">
+                        &copy; 2020 <a href="https://webpixels.io" class="font-weight-bold"
+                            target="_blank">LabCoding</a>. All rights reserved
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <ul class="nav justify-content-center justify-content-md-end mt-3 mt-md-0">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                Termos de uso
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a [routerLink]="['/contato']" class="nav-link" href="#">
+                                Contato
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a  [routerLink]="['/search']" class="nav-link" href="#">
+                                Vagas
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <!-- <a class="nav-link" href="#">
+                                Cursos
+                            </a> -->
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
